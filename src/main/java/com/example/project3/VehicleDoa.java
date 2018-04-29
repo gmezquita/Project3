@@ -30,7 +30,7 @@ public class VehicleDoa {
     public Vehicle update(Vehicle vehicle) {
 
         if (entityManager.find(Vehicle.class, vehicle.getId()) == null) {
-            System.out.println("Unknown ID entered.");
+            System.out.println("Unknown ID entered for update.");
             return vehicle;
         }
         else {
@@ -41,7 +41,7 @@ public class VehicleDoa {
     public ResponseEntity<String> delete(int id) {
 
         if (entityManager.find(Vehicle.class, id) == null) {
-            System.out.println("Unknown ID entered.");
+            System.out.println("Unknown ID entered for delete.");
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
         }
         else {
@@ -51,10 +51,6 @@ public class VehicleDoa {
     }
 
     public List<Vehicle> getLatest () {
-
-        System.out.println("list:" + entityManager.createNativeQuery("SELECT * from Inventory order by id desc limit 10").getResultList().get(0).toString());
-        String tempVehicle = entityManager.createNativeQuery("SELECT * from Inventory order by id desc limit 10").getResultList().toString();
-        System.out.println("vehicle: " + tempVehicle);
 
         return entityManager.createNativeQuery("SELECT * from Inventory order by id desc limit 10").getResultList();
 
