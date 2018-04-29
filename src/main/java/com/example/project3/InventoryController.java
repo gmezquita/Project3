@@ -13,6 +13,7 @@ public class InventoryController {
     @Autowired
     private VehicleDoa vehicleDoa;
 
+    @Timed
     @RequestMapping(value = "/addVehicle", method = RequestMethod.POST)
     public Vehicle addVehicle(@RequestBody Vehicle newVehicle) throws IOException {
 
@@ -20,24 +21,28 @@ public class InventoryController {
         return newVehicle;
     }
 
+    @Timed
     @RequestMapping(value = "/getVehicle/{id}", method = RequestMethod.GET)
     public Vehicle getVehicle(@PathVariable("id") int id) throws IOException {
 
         return vehicleDoa.getById(id);
     }
 
+    @Timed
     @RequestMapping(value = "/updateVehicle", method = RequestMethod.PUT)
     public Vehicle updateVehicle(@RequestBody Vehicle newVehicle) throws IOException {
 
         return vehicleDoa.update(newVehicle);
     }
 
+    @Timed
     @RequestMapping(value = "/deleteVehicle/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteVehicle(@PathVariable("id") int id) throws IOException {
 
         return vehicleDoa.delete(id);
     }
 
+    @Timed
     @RequestMapping(value = "/getLatestVehicles", method = RequestMethod.GET)
     public List<Vehicle> getLatestVehicles() throws IOException {
 

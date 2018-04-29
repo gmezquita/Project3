@@ -11,7 +11,7 @@ public class MyTasks {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    @Scheduled(fixedRate = 500)
+    @Scheduled(fixedRate = 3000)
     public void addVehicle() {
 
         System.out.println("addVehicle.........");
@@ -22,7 +22,7 @@ public class MyTasks {
         restTemplate.postForObject(postURL, newVehicle, Vehicle.class);
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 4000)
     public void deleteVehicle() {
 
         System.out.println("deleteVehicle.........");
